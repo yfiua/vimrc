@@ -214,6 +214,9 @@ endif
 " Enable syntax highlighting
 syntax enable
 
+" Syntax highlighting for custom extensions
+autocmd BufNewFile,BufRead *.stu set filetype=stu syntax=sh
+
 " Enable cursor line
 set cursorline
 
@@ -400,15 +403,31 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
-" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+" Show trailing whitespaces
+function ShowSpaces(...)
+  let @/='\v(\s+$)'
+  let oldhlsearch=&hlsearch
+  if !a:0
+    let &hlsearch=!&hlsearch
+  else
+    let &hlsearch=a:1
+  end
+  return oldhlsearch
+endfunction
+
+" Delete trailing whitespaces on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
+
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
+" Keybindings for showing and deleting trailing whitespaces
+nnoremap <F8>     :call ShowSpaces()<CR>
+nnoremap <S-F8>   :call DeleteTrailingWS()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack searching and cope displaying
