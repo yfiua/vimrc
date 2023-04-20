@@ -458,6 +458,9 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
+" Toggle ALE
+map <F9> :ALEToggle<cr>
+
 " Toggle NERDTreeTabs
 map <F12> :NERDTreeTabsToggle<cr>
 
