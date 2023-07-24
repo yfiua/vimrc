@@ -263,8 +263,8 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" 1 tab == 2 spaces for TeX, LaTeX
-autocmd FileType tex,latex,context,plaintex setlocal shiftwidth=2 tabstop=2
+" 1 tab == 2 spaces for TeX, LaTeX, HTML
+autocmd FileType tex,latex,context,plaintex,html setlocal shiftwidth=2 tabstop=2
 
 " Linebreak on 500 characters
 set lbr
