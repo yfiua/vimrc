@@ -275,6 +275,9 @@ set si "Smart indent
 set wrap "Wrap lines
 set smoothscroll "Smooth scrolling
 
+" Disable smartindent for Python
+autocmd FileType python setlocal nosmartindent
+
 " Display the content of the last line as much as possible
 set display+=lastline
 
