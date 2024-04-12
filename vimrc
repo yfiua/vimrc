@@ -506,6 +506,20 @@ set showmode
 " Move NERDTree to right
 let g:NERDTreeWinPos = "right"
 
+" Enable Copilot for the gitcommit, markdown and yaml filetypes:
+let g:copilot_filetypes = {
+            \ 'gitcommit': v:true,
+            \ 'markdown': v:true,
+            \ 'yaml': v:true
+            \ }
+
+" Disable Copilot for large files as it can be slow and impair the editing experience:
+autocmd BufReadPre *
+            \ let f=getfsize(expand("<afile>"))
+            \ | if f > 100000 || f == -2
+            \ | let b:copilot_enabled = v:false
+            \ | endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
